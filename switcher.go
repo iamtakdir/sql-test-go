@@ -16,7 +16,7 @@ Enter 4 for delete data
 	switch {
 
 	case take == 1:
-		get_all()
+		//get_all()
 
 	case take == 2:
 		var key int
@@ -29,7 +29,7 @@ Enter 4 for delete data
 		insert_into(key, value)
 
 	case take == 3:
-		get_all()
+		//get_all()
 		var key int
 		var value string
 		fmt.Println("enter a id")
@@ -39,7 +39,7 @@ Enter 4 for delete data
 		update_data(key, value)
 
 	case take == 4:
-		get_all()
+		//get_all()
 
 		var key int
 		fmt.Println("enter id that you want to delete ?")

@@ -5,9 +5,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"net/http"
 )
 
-func get_all() {
+func get_all(w http.ResponseWriter, r *http.Request) {
 	db, err := sql.Open("mysql", "root:root@tcp(127.0.0.1:3306)/testdb")
 	defer db.Close()
 
@@ -35,7 +36,9 @@ func get_all() {
 
 	json_data, _ := json.Marshal(js_data)
 
-	fmt.Println(string(json_data))
+	w.Header().Set("Content-Type", "application/json")
+	//fmt.Fprintf(w, string(json_data))
+	fmt.Fprintf(w, string(json_data))
 
 }
 
@@ -57,7 +60,7 @@ func insert_into(key int, value string) {
 
 	fmt.Println("Inserted successfully")
 
-	get_all()
+	//get_all()
 }
 
 func update_data(key int, value string) {
@@ -74,7 +77,7 @@ func update_data(key int, value string) {
 	}
 	update.Exec(value, key)
 
-	get_all()
+	//get_all()
 
 }
 
@@ -92,14 +95,6 @@ func delete_data(id int) {
 	}
 	delete.Exec(id)
 
-	get_all()
+	//get_all()
 
-}
-
-func marshalling(js map[int]string) {
-
-	json.Marshal(js)
-	fmt.Println(js)
-
-	fmt.Println(js)
 }

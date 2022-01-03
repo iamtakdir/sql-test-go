@@ -5,5 +5,7 @@ import (
 )
 
 func main() {
-	switcher()
+	app := App{}
+	app.initialiseRoutes()
+	app.run()
 }
